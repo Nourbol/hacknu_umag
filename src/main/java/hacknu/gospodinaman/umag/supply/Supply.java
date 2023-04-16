@@ -22,7 +22,7 @@ public class Supply {
     @Id
     private Long id;
     private BigInteger barcode;
-    private Integer quantity;
+    private Long quantity;
     private Long price;
     private Timestamp supplyTime;
 }

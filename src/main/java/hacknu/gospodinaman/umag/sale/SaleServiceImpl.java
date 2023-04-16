@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,5 +43,25 @@ public class SaleServiceImpl implements SaleService {
     public void deleteSaleById(Long id) {
         getSaleById(id);
         saleRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Sale> getLastSale(BigInteger barcode) {
+        return saleRepository.getLastSale(barcode);
+    }
+
+    @Override
+    public Optional<Sale> getLastSaleBefore(BigInteger barcode, Timestamp saleTime) {
+        return saleRepository.getLastSaleBefore(barcode, saleTime);
+    }
+
+    @Override
+    public Long getProductTotalQuantity(BigInteger barcode) {
+        return saleRepository.sumAllProductQuantities(barcode);
+    }
+
+    @Override
+    public Optional<Sale> getFirstSaleAfter(BigInteger barcode, Timestamp saleTime) {
+        return saleRepository.getFirstSaleAfter(barcode, saleTime);
     }
 }

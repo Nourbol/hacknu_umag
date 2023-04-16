@@ -15,4 +15,6 @@ public interface SupplyService {
     void updateSupplyById(Long id, SupplySaveRequest updatedSupply);
 
     void deleteSupplyById(Long id);
+
+    Long get
 }
